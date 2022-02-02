@@ -1,0 +1,16 @@
+*
+!.gitignore
+!README.md
+!Dockerfile
+!.dockerignore
+!compose.yml
+
+!app
+!app/*
+app/tmp
+
+!scripts
+!scripts/*
+
+!init.sh
+!run.sh
