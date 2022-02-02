@@ -4,6 +4,7 @@
 !Dockerfile
 !.dockerignore
 !compose.yml
+!.env.template
 
 !app
 !app/*
