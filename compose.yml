@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  golang-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: ${ENVIRONMENT}
+      args:
+        - BASE_IMAGE
+        - IMAGE_VERSION
+        - WORK_DIR
+        - MODULE_PATH
+    image: ${NAMESPACE}-${COMPOSE_PROJECT_NAME}-${ENVIRONMENT}:golang
+    profiles:
+      - "dev"
+    container_name: ${COMPOSE_PROJECT_NAME}-${ENVIRONMENT}_golang
+    restart: always
+    volumes:
+      - type: bind
+        source: ${PWD}/app
+        target: ${WORK_DIR}
+      - type: bind
+        source: ${PWD}/scripts
+        target: /usr/local/bin
+
+  golang-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: ${ENVIRONMENT}
+      args:
+        - BASE_IMAGE
+        - IMAGE_VERSION
+        - WORK_DIR
+        - MODULE_PATH
+    image: ${NAMESPACE}-${COMPOSE_PROJECT_NAME}-${ENVIRONMENT}:golang
+    profiles:
+      - "prod"
+    container_name: ${COMPOSE_PROJECT_NAME}-${ENVIRONMENT}_golang
