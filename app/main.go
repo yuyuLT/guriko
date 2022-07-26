@@ -24,7 +24,6 @@ func main() {
 		if steps % 3 == 0 {
 			input_flg = 1;
 		} 
-
 	}
 
 	p_steps := steps
