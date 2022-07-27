@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 	"strconv"
+	"example.com/module/enemyhand"
 )
 
 func main() {
@@ -49,8 +48,7 @@ func main() {
 		}
 
 		//相手のジャンケンの手を乱数で生成
-		rand.Seed(time.Now().UnixNano())
-		var enemy_hand int = rand.Intn(3)
+		var enemy_hand int = enemyhand.CreateEnemyHand();
 		
 		var enemy_rpc string
 		switch enemy_hand {
