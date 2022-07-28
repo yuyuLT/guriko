@@ -25,6 +25,8 @@ func main() {
 		} 
 	}
 
+	my_hands := []int{}
+
 	p_steps := steps
 	c_steps := steps
 
@@ -47,8 +49,22 @@ func main() {
 			}
 		}
 
-		//相手のジャンケンの手を乱数で生成
-		var enemy_hand int = enemyhand.CreateEnemyHand();
+		//自分が出した手を記録
+		my_hands = append(my_hands, my_hand)
+
+		var enemy_hand int
+
+		//自分の手が連続3回同じ手の場合、それに勝てる手を出す
+		if enemyhand.JudgeConsecutive(my_hands){
+			enemy_hand = enemyhand.CreateWinHand(my_hands)
+		}else{
+			//相手の手を乱数で生成（自分がゴールに近づいたとき出し方に変化を加える）
+			if p_steps <= 15 {
+				enemy_hand = enemyhand.CreateEnemyHand()
+			}else{
+				enemy_hand = enemyhand.CreateOptimizedEnemyHand()
+			}
+		}
 		
 		var enemy_rpc string
 		switch enemy_hand {
