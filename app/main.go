@@ -115,7 +115,7 @@ func advanceCount(hand int) int{
 	var count int
 	switch hand {
 	case 0:
-		count = 4
+		count = 3
 	case 1:
 		count = 6
 	case 2: 
