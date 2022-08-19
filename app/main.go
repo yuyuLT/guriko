@@ -7,23 +7,11 @@ import (
 )
 
 func main() {
-	var steps int
-	input_flg := 0
-
+	
 	//段数を入力
-	for input_flg == 0 {
-
-		fmt.Print("ゴールまでの段数(3の倍数)を入力してください > ")
-		fmt.Scan(&steps)
-
-		if steps % 3 != 0 	{
-			fmt.Println("段数は3の倍数で入力してください")
-		}
-
-		if steps % 3 == 0 {
-			input_flg = 1;
-		} 
-	}
+	var steps int
+	fmt.Print("ゴールまでの段数を入力してください > ")
+	fmt.Scan(&steps)
 
 	my_hands := []int{}
 
